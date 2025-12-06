@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University LMS Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Top Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a365d;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            color: #f97316;
+            margin-right: 0.5rem;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-icon {
+            font-size: 1.2rem;
+            color: #64748b;
+            position: relative;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .nav-icon:hover {
+            color: #f97316;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -8px;
+            background-color: #ef4444;
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            transition: background-color 0.2s;
+        }
+
+        .user-profile:hover {
+            background-color: #f8fafc;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f97316, #3b82f6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        /* Main Content */
+        .container {
+            display: flex;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 2rem;
+            gap: 2rem;
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        /* Welcome Banner */
+        .welcome-banner {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 16px;
+            padding: 2.5rem;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+        }
+
+        .welcome-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .welcome-text p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .illustration {
+            width: 180px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            background-color: white;
+            border-radius: 12px;
+            padding: 0.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 1rem 0;
+            cursor: pointer;
+            font-weight: 600;
+            color: #64748b;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .tab.active {
+            background-color: #f0f9ff;
+            color: #3b82f6;
+        }
+
+        .tab:hover:not(.active) {
+            background-color: #f8fafc;
+        }
+
+        /* Course Cards */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .view-all {
+            color: #3b82f6;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .course-card {
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-thumbnail {
+            height: 140px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .course-info {
+            padding: 1.5rem;
+        }
+
+        .course-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-code {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-icon {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #64748b;
+            font-size: 0.9rem;
+            background-color: #f8fafc;
+            padding: 0.5rem 0.8rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .chat-icon:hover {
+            background-color: #f0f9ff;
+            color: #3b82f6;
+        }
+
+        .chat-count {
+            background-color: #f97316;
+            color: white;
+            font-size: 0.8rem;
+            padding: 0.1rem 0.5rem;
+            border-radius: 10px;
+        }
+
+        /* Announcements */
+        .announcements {
+            background-color: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .announcement-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .announcement-item:last-child {
+            border-bottom: none;
+        }
+
+        .announcement-title {
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .announcement-date {
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .announcement-content {
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 350px;
+        }
+
+        .sidebar-widget {
+            background-color: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .widget-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .widget-title i {
+            color: #f97316;
+        }
+
+        /* Calendar */
+        .calendar {
+            width: 100%;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .calendar-month {
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .calendar-nav button {
+            background-color: #f1f5f9;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #64748b;
+        }
+
+        .calendar-weekdays, .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+
+        .calendar-weekdays div {
+            text-align: center;
+            font-weight: 600;
+            color: #64748b;
+            font-size: 0.9rem;
+            padding: 0.5rem 0;
+        }
+
+        .calendar-days div {
+            text-align: center;
+            padding: 0.8rem 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .calendar-days div:hover {
+            background-color: #f0f9ff;
+        }
+
+        .calendar-days .today {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .calendar-days .other-month {
+            color: #cbd5e1;
+        }
+
+        /* Events List */
+        .event-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .event-item:last-child {
+            border-bottom: none;
+        }
+
+        .event-date {
+            background-color: #f0f9ff;
+            border-radius: 10px;
+            padding: 0.7rem;
+            text-align: center;
+            min-width: 70px;
+            margin-right: 1rem;
+        }
+
+        .event-day {
+            font-weight: 700;
+            color: #3b82f6;
+            font-size: 1.2rem;
+        }
+
+        .event-month {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .event-details {
+            flex: 1;
+        }
+
+        .event-title {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.3rem;
+        }
+
+        .event-time {
+            color: #64748b;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 2rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .courses-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .welcome-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+            
+            .welcome-text h1 {
+                font-size: 1.8rem;
+            }
+            
+            .illustration {
+                margin-top: 1rem;
+                width: 140px;
+                height: 120px;
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-graduation-cap logo-icon"></i>
+            EduPortal
+        </div>
+        <div class="nav-icons">
+            <div class="nav-icon">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </div>
+            <div class="nav-icon">
+                <i class="fas fa-envelope"></i>
+                <span class="notification-badge">12</span>
+            </div>
+            <div class="nav-icon">
+                <i class="fas fa-cog"></i>
+            </div>
+            <div class="user-profile">
+                <div class="user-avatar">MS</div>
+                <div class="user-name">Muhammed Sinan</div>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+                <div class="welcome-text">
+                    <h1>Welcome Muhammed Sinan</h1>
+                    <p>You have 3 upcoming assignments and 2 live classes this week</p>
+                </div>
+                <div class="illustration">
+                    <i class="fas fa-book-open"></i>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <div class="tab active">Announcements</div>
+                <div class="tab">Calendar</div>
+                <div class="tab">E-Library</div>
+            </div>
+
+            <!-- My Courses -->
+            <div class="section-title">
+                My Courses
+                <span class="view-all">View All <i class="fas fa-arrow-right"></i></span>
+            </div>
+            
+            <div class="courses-grid">
+                <!-- Course Card 1 -->
+                <div class="course-card">
+                    <div class="course-thumbnail" style="background: linear-gradient(135deg, #f97316, #fb923c);">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-title">Web Programming</div>
+                        <span class="course-code">CS 402</span>
+                        <div class="course-footer">
+                            <div class="instructor">Dr. Sarah Johnson</div>
+                            <div class="chat-icon">
+                                <i class="fas fa-comment-alt"></i>
+                                <span class="chat-count">99+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 2 -->
+                <div class="course-card">
+                    <div class="course-thumbnail" style="background: linear-gradient(135deg, #3b82f6, #60a5fa);">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-title">Database Systems</div>
+                        <span class="course-code">CS 305</span>
+                        <div class="course-footer">
+                            <div class="instructor">Prof. Michael Chen</div>
+                            <div class="chat-icon">
+                                <i class="fas fa-comment-alt"></i>
+                                <span class="chat-count">99+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div class="course-card">
+                    <div class="course-thumbnail" style="background: linear-gradient(135deg, #10b981, #34d399);">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-title">Artificial Intelligence</div>
+                        <span class="course-code">CS 410</span>
+                        <div class="course-footer">
+                            <div class="instructor">Dr. Elena Rodriguez</div>
+                            <div class="chat-icon">
+                                <i class="fas fa-comment-alt"></i>
+                                <span class="chat-count">99+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 4 -->
+                <div class="course-card">
+                    <div class="course-thumbnail" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-title">Discrete Mathematics</div>
+                        <span class="course-code">MATH 210</span>
+                        <div class="course-footer">
+                            <div class="instructor">Dr. Robert Williams</div>
+                            <div class="chat-icon">
+                                <i class="fas fa-comment-alt"></i>
+                                <span class="chat-count">99+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 5 -->
+                <div class="course-card">
+                    <div class="course-thumbnail" style="background: linear-gradient(135deg, #ef4444, #f87171);">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-title">Computer Networks</div>
+                        <span class="course-code">CS 320</span>
+                        <div class="course-footer">
+                            <div class="instructor">Prof. James Wilson</div>
+                            <div class="chat-icon">
+                                <i class="fas fa-comment-alt"></i>
+                                <span class="chat-count">99+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 6 -->
+                <div class="course-card">
+                    <div class="course-thumbnail" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-title">Mobile App Development</div>
+                        <span class="course-code">CS 415</span>
+                        <div class="course-footer">
+                            <div class="instructor">Dr. Lisa Anderson</div>
+                            <div class="chat-icon">
+                                <i class="fas fa-comment-alt"></i>
+                                <span class="chat-count">99+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Announcements -->
+            <div class="section-title">
+                Academic Announcements
+            </div>
+            
+            <div class="announcements">
+                <div class="announcement-item">
+                    <div class="announcement-title">
+                        Midterm Exam Schedule Released
+                        <span class="announcement-date">March 15, 2023</span>
+                    </div>
+                    <div class="announcement-content">
+                        The midterm exam schedule for Spring 2023 has been published. Please check your student portal for the exact dates and times of your exams. All exams will be conducted in the main examination hall.
+                    </div>
+                </div>
+                
+                <div class="announcement-item">
+                    <div class="announcement-title">
+                        Registration for Fall 2023 Courses
+                        <span class="announcement-date">March 12, 2023</span>
+                    </div>
+                    <div class="announcement-content">
+                        Course registration for Fall 2023 will open on April 1st. Please meet with your academic advisor to discuss your course selection before registration begins.
+                    </div>
+                </div>
+                
+                <div class="announcement-item">
+                    <div class="announcement-title">
+                        Career Fair 2023
+                        <span class="announcement-date">March 10, 2023</span>
+                    </div>
+                    <div class="announcement-content">
+                        The annual university career fair will be held on April 5th. Over 50 companies from various industries will be participating. Update your resumes and prepare your portfolios.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Calendar Widget -->
+            <div class="sidebar-widget calendar">
+                <div class="widget-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    Calendar
+                </div>
+                
+                <div class="calendar-header">
+                    <div class="calendar-month">March 2023</div>
+                    <div class="calendar-nav">
+                        <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                        <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                
+                <div class="calendar-weekdays">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+                
+                <div class="calendar-days" id="calendar-days">
+                    <!-- Calendar days will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Upcoming Events -->
+            <div class="sidebar-widget">
+                <div class="widget-title">
+                    <i class="fas fa-list-alt"></i>
+                    Upcoming Events
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">22</div>
+                        <div class="event-month">MAR</div>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-title">Live Class Link – C Programming</div>
+                        <div class="event-time">
+                            <i class="far fa-clock"></i> 10:00 AM - 11:30 AM
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">24</div>
+                        <div class="event-month">MAR</div>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-title">Introduction to Web Programming</div>
+                        <div class="event-time">
+                            <i class="far fa-clock"></i> 2:00 PM - 3:30 PM
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">27</div>
+                        <div class="event-month">MAR</div>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-title">Database Systems Assignment Due</div>
+                        <div class="event-time">
+                            <i class="far fa-clock"></i> 11:59 PM
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">29</div>
+                        <div class="event-month">MAR</div>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-title">AI Project Presentation</div>
+                        <div class="event-time">
+                            <i class="far fa-clock"></i> 9:00 AM - 12:00 PM
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">02</div>
+                        <div class="event-month">APR</div>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-title">Midterm Exam: Computer Networks</div>
+                        <div class="event-time">
+                            <i class="far fa-clock"></i> 1:00 PM - 3:00 PM
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2023 EduPortal Learning Management System. All rights reserved. | Privacy Policy | Terms of Service</p>
+    </div>
+
+    <script>
+        // Calendar functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const monthYearElement = document.querySelector('.calendar-month');
+            const calendarDaysElement = document.getElementById('calendar-days');
+            const prevMonthButton = document.getElementById('prev-month');
+            const nextMonthButton = document.getElementById('next-month');
+            
+            let currentDate = new Date(2023, 2, 1); // March 2023
+            
+            function renderCalendar(date) {
+                const year = date.getFullYear();
+                const month = date.getMonth();
+                
+                // Set month and year in header
+                const monthNames = ["January", "February", "March", "April", "May", "June",
+                                    "July", "August", "September", "October", "November", "December"];
+                monthYearElement.textContent = `${monthNames[month]} ${year}`;
+                
+                // Get first day of month and total days in month
+                const firstDay = new Date(year, month, 1);
+                const lastDay = new Date(year, month + 1, 0);
+                const daysInMonth = lastDay.getDate();
+                const startingDay = firstDay.getDay(); // 0 = Sunday, 1 = Monday, etc.
+                
+                // Clear calendar
+                calendarDaysElement.innerHTML = '';
+                
+                // Previous month's days
+                const prevMonthLastDay = new Date(year, month, 0).getDate();
+                for (let i = 0; i < startingDay; i++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.textContent = prevMonthLastDay - startingDay + i + 1;
+                    dayElement.classList.add('other-month');
+                    calendarDaysElement.appendChild(dayElement);
+                }
+                
+                // Current month's days
+                const today = new Date();
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.textContent = day;
+                    
+                    // Check if this is today
+                    if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
+                        dayElement.classList.add('today');
+                    }
+                    
+                    calendarDaysElement.appendChild(dayElement);
+                }
+                
+                // Next month's days (to fill the grid)
+                const totalCells = 42; // 6 rows * 7 columns
+                const remainingCells = totalCells - (startingDay + daysInMonth);
+                
+                for (let day = 1; day <= remainingCells; day++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.textContent = day;
+                    dayElement.classList.add('other-month');
+                    calendarDaysElement.appendChild(dayElement);
+                }
+            }
+            
+            // Initialize calendar
+            renderCalendar(currentDate);
+            
+            // Event listeners for previous/next month buttons
+            prevMonthButton.addEventListener('click', function() {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                renderCalendar(currentDate);
+            });
+            
+            nextMonthButton.addEventListener('click', function() {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                renderCalendar(currentDate);
+            });
+            
+            // Tab switching functionality
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                });
+            });
+            
+            // Course card hover effect enhancement
+            const courseCards = document.querySelectorAll('.course-card');
+            courseCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
