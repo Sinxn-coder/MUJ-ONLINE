@@ -3,47 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>University LMS Dashboard</title>
+    <title>University Learning Portal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
         }
 
         body {
             background-color: #f5f7fa;
             color: #333;
-            min-height: 100vh;
-            overflow-x: hidden;
+            line-height: 1.5;
         }
 
-        /* Top Navigation Bar */
+        /* Top Navigation */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            background-color: #fff;
+            border-bottom: 1px solid #e1e5eb;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #1a365d;
             display: flex;
             align-items: center;
+            gap: 0.8rem;
         }
 
         .logo-icon {
-            color: #f97316;
-            margin-right: 0.5rem;
+            width: 40px;
+            height: 40px;
+            background-color: #1a5f7a;
+            color: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
         }
 
         .nav-icons {
@@ -52,31 +61,33 @@
             gap: 1.5rem;
         }
 
-        .nav-icon {
-            font-size: 1.2rem;
-            color: #64748b;
+        .icon-container {
             position: relative;
             cursor: pointer;
-            transition: color 0.2s;
+            color: #5d6d7e;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
         }
 
-        .nav-icon:hover {
-            color: #f97316;
+        .icon-container:hover {
+            background-color: #f0f2f5;
+            color: #1a5f7a;
         }
 
         .notification-badge {
             position: absolute;
-            top: -5px;
-            right: -8px;
-            background-color: #ef4444;
+            top: 0;
+            right: 0;
+            background-color: #e74c3c;
             color: white;
             font-size: 0.7rem;
             width: 18px;
             height: 18px;
             border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
         }
 
         .user-profile {
@@ -85,35 +96,34 @@
             gap: 0.8rem;
             cursor: pointer;
             padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            transition: background-color 0.2s;
+            border-radius: 4px;
         }
 
         .user-profile:hover {
-            background-color: #f8fafc;
+            background-color: #f0f2f5;
         }
 
         .user-avatar {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #f97316, #3b82f6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-color: #3498db;
             color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: 600;
         }
 
         .user-name {
-            font-weight: 600;
-            color: #1e293b;
+            font-weight: 500;
+            color: #2c3e50;
         }
 
-        /* Main Content */
+        /* Main Layout */
         .container {
             display: flex;
-            max-width: 1440px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
             gap: 2rem;
@@ -125,84 +135,99 @@
 
         /* Welcome Banner */
         .welcome-banner {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            border-radius: 16px;
-            padding: 2.5rem;
-            color: white;
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e1e5eb;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
         }
 
         .welcome-text h1 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
+            color: #2c3e50;
             margin-bottom: 0.5rem;
         }
 
         .welcome-text p {
-            opacity: 0.9;
-            font-size: 1.1rem;
+            color: #5d6d7e;
+            font-size: 1rem;
         }
 
-        .illustration {
-            width: 180px;
-            height: 150px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+        .welcome-illustration {
+            width: 120px;
+            height: 80px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
             display: flex;
-            justify-content: center;
             align-items: center;
-            font-size: 4rem;
+            justify-content: center;
+            color: #1a5f7a;
+            border: 1px solid #e1e5eb;
+        }
+
+        .welcome-illustration i {
+            font-size: 2.5rem;
         }
 
         /* Tabs */
         .tabs {
             display: flex;
             background-color: white;
-            border-radius: 12px;
-            padding: 0.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e1e5eb;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
         }
 
         .tab {
             flex: 1;
             text-align: center;
-            padding: 1rem 0;
+            padding: 1rem;
             cursor: pointer;
-            font-weight: 600;
-            color: #64748b;
-            border-radius: 8px;
-            transition: all 0.2s;
+            font-weight: 500;
+            color: #5d6d7e;
+            border-right: 1px solid #e1e5eb;
+            transition: background-color 0.2s;
+        }
+
+        .tab:last-child {
+            border-right: none;
+        }
+
+        .tab:hover {
+            background-color: #f8f9fa;
         }
 
         .tab.active {
-            background-color: #f0f9ff;
-            color: #3b82f6;
+            background-color: #f0f7ff;
+            color: #1a5f7a;
+            border-bottom: 2px solid #1a5f7a;
         }
 
-        .tab:hover:not(.active) {
-            background-color: #f8fafc;
-        }
-
-        /* Course Cards */
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 1.5rem;
+        /* My Courses Section */
+        .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            font-weight: 600;
         }
 
         .view-all {
-            color: #3b82f6;
+            color: #1a5f7a;
             font-size: 0.95rem;
-            font-weight: 600;
             cursor: pointer;
+            font-weight: 500;
         }
 
         .courses-grid {
@@ -214,40 +239,39 @@
 
         .course-card {
             background-color: white;
-            border-radius: 16px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #e1e5eb;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+            transition: box-shadow 0.2s;
         }
 
         .course-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
         }
 
         .course-thumbnail {
-            height: 140px;
-            width: 100%;
+            height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
             color: white;
+            font-size: 2rem;
         }
 
         .course-info {
-            padding: 1.5rem;
+            padding: 1.2rem;
         }
 
         .course-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
         }
 
         .course-code {
-            color: #64748b;
+            color: #5d6d7e;
             font-size: 0.9rem;
             margin-bottom: 1rem;
             display: block;
@@ -259,43 +283,49 @@
             align-items: center;
         }
 
-        .chat-icon {
+        .instructor {
+            color: #5d6d7e;
+            font-size: 0.9rem;
+        }
+
+        .discussion-btn {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: #64748b;
+            color: #5d6d7e;
             font-size: 0.9rem;
-            background-color: #f8fafc;
-            padding: 0.5rem 0.8rem;
-            border-radius: 50px;
             cursor: pointer;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            background-color: #f8f9fa;
             transition: background-color 0.2s;
         }
 
-        .chat-icon:hover {
-            background-color: #f0f9ff;
-            color: #3b82f6;
+        .discussion-btn:hover {
+            background-color: #f0f2f5;
         }
 
-        .chat-count {
-            background-color: #f97316;
+        .comment-count {
+            background-color: #f39c12;
             color: white;
             font-size: 0.8rem;
             padding: 0.1rem 0.5rem;
             border-radius: 10px;
+            font-weight: 600;
         }
 
-        /* Announcements */
-        .announcements {
+        /* Announcements Section */
+        .announcements-section {
             background-color: white;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e1e5eb;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
         }
 
         .announcement-item {
-            padding: 1.5rem 0;
-            border-bottom: 1px solid #e2e8f0;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid #e1e5eb;
         }
 
         .announcement-item:last-child {
@@ -303,49 +333,44 @@
         }
 
         .announcement-title {
-            font-weight: 700;
-            color: #1e293b;
+            font-weight: 600;
+            color: #2c3e50;
             margin-bottom: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .announcement-date {
-            color: #64748b;
-            font-size: 0.9rem;
-            font-weight: 500;
         }
 
         .announcement-content {
-            color: #475569;
+            color: #5d6d7e;
+            font-size: 0.95rem;
             line-height: 1.6;
         }
 
-        /* Sidebar */
+        .announcement-date {
+            color: #7f8c8d;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Right Sidebar */
         .sidebar {
-            width: 350px;
+            width: 320px;
         }
 
         .sidebar-widget {
             background-color: white;
-            border-radius: 16px;
+            border-radius: 8px;
             padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+            border: 1px solid #e1e5eb;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
         }
 
         .widget-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .widget-title i {
-            color: #f97316;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e1e5eb;
         }
 
         /* Calendar */
@@ -357,12 +382,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .calendar-month {
-            font-weight: 700;
-            color: #1e293b;
+            font-weight: 600;
+            color: #2c3e50;
         }
 
         .calendar-nav {
@@ -371,121 +396,114 @@
         }
 
         .calendar-nav button {
-            background-color: #f1f5f9;
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
+            background-color: #f8f9fa;
+            border: 1px solid #e1e5eb;
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            color: #64748b;
+            color: #5d6d7e;
         }
 
         .calendar-weekdays, .calendar-days {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 0.5rem;
+            gap: 0.3rem;
         }
 
         .calendar-weekdays div {
             text-align: center;
-            font-weight: 600;
-            color: #64748b;
-            font-size: 0.9rem;
+            font-weight: 500;
+            color: #5d6d7e;
+            font-size: 0.85rem;
             padding: 0.5rem 0;
         }
 
         .calendar-days div {
             text-align: center;
-            padding: 0.8rem 0;
-            border-radius: 10px;
+            padding: 0.6rem 0;
+            border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.2s;
+            font-size: 0.9rem;
         }
 
         .calendar-days div:hover {
-            background-color: #f0f9ff;
+            background-color: #f0f7ff;
         }
 
         .calendar-days .today {
-            background-color: #3b82f6;
+            background-color: #1a5f7a;
             color: white;
         }
 
         .calendar-days .other-month {
-            color: #cbd5e1;
+            color: #bdc3c7;
         }
 
-        /* Events List */
-        .event-item {
-            padding: 1rem 0;
-            border-bottom: 1px solid #e2e8f0;
+        /* Upcoming Events */
+        .events-list {
             display: flex;
-            align-items: flex-start;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .event-day-header {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px dashed #e1e5eb;
+        }
+
+        .event-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f2f5;
         }
 
         .event-item:last-child {
             border-bottom: none;
         }
 
-        .event-date {
-            background-color: #f0f9ff;
-            border-radius: 10px;
-            padding: 0.7rem;
-            text-align: center;
-            min-width: 70px;
-            margin-right: 1rem;
-        }
-
-        .event-day {
-            font-weight: 700;
-            color: #3b82f6;
-            font-size: 1.2rem;
-        }
-
-        .event-month {
-            font-size: 0.8rem;
-            color: #64748b;
-        }
-
-        .event-details {
-            flex: 1;
-        }
-
-        .event-title {
-            font-weight: 600;
-            color: #1e293b;
+        .event-time {
+            color: #1a5f7a;
+            font-weight: 500;
+            font-size: 0.9rem;
             margin-bottom: 0.3rem;
         }
 
-        .event-time {
-            color: #64748b;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
+        .event-title {
+            color: #2c3e50;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: inline-block;
+        }
+
+        .event-title:hover {
+            color: #1a5f7a;
+            text-decoration: underline;
         }
 
         /* Footer */
         .footer {
             text-align: center;
             padding: 2rem;
-            color: #64748b;
+            color: #7f8c8d;
             font-size: 0.9rem;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid #e1e5eb;
             margin-top: 2rem;
         }
 
-        /* Responsive adjustments */
+        /* Responsive */
         @media (max-width: 1200px) {
             .courses-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-        }
-
-        @media (max-width: 992px) {
+            
             .container {
                 flex-direction: column;
             }
@@ -507,44 +525,37 @@
             .welcome-banner {
                 flex-direction: column;
                 text-align: center;
-                padding: 1.5rem;
+                gap: 1.5rem;
             }
             
             .welcome-text h1 {
-                font-size: 1.8rem;
-            }
-            
-            .illustration {
-                margin-top: 1rem;
-                width: 140px;
-                height: 120px;
-                font-size: 3rem;
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Top Navigation Bar -->
+    <!-- Top Navigation -->
     <nav class="navbar">
         <div class="logo">
-            <i class="fas fa-graduation-cap logo-icon"></i>
-            MUJ ONLINE
+            <div class="logo-icon">U</div>
+            <div class="logo-text">University Portal</div>
         </div>
+        
         <div class="nav-icons">
-            <div class="nav-icon">
+            <div class="icon-container">
                 <i class="fas fa-bell"></i>
-                <span class="notification-badge">3</span>
+                <div class="notification-badge">3</div>
             </div>
-            <div class="nav-icon">
+            
+            <div class="icon-container">
                 <i class="fas fa-envelope"></i>
-                <span class="notification-badge">5</span>
+                <div class="notification-badge">12</div>
             </div>
-            <div class="nav-icon">
-                <i class="fas fa-cog"></i>
-            </div>
+            
             <div class="user-profile">
                 <div class="user-avatar">🏫</div>
-                <div class="user-name">MANIPAL UNIVERSITY</div>
+                <div class="user-name">MUJ ONLINE</div>
                 <i class="fas fa-chevron-down"></i>
             </div>
         </div>
@@ -556,11 +567,11 @@
             <!-- Welcome Banner -->
             <div class="welcome-banner">
                 <div class="welcome-text">
-                    <h1>Welcome To MUJ</h1>
-                    <p>You have 5 upcoming assignments to Complete</p>
+                    <h1>Welcome Muhammed Sinan</h1>
+                    <p>Check your courses, assignments, and upcoming events</p>
                 </div>
-                <div class="illustration">
-                    <i class="fas fa-book-open"></i>
+                <div class="welcome-illustration">
+                    <i class="fas fa-graduation-cap"></i>
                 </div>
             </div>
 
@@ -572,15 +583,15 @@
             </div>
 
             <!-- My Courses -->
-            <div class="section-title">
-                My Courses
-                <span class="view-all">View All <i class="fas fa-arrow-right"></i></span>
+            <div class="section-header">
+                <div class="section-title">My Courses</div>
+                <div class="view-all">View All Courses <i class="fas fa-arrow-right"></i></div>
             </div>
             
             <div class="courses-grid">
                 <!-- Course Card 1 -->
                 <div class="course-card">
-                    <div class="course-thumbnail" style="background: linear-gradient(135deg, #f97316, #fb923c);">
+                    <div class="course-thumbnail" style="background-color: #3498db;">
                         <i class="fas fa-code"></i>
                     </div>
                     <div class="course-info">
@@ -588,9 +599,9 @@
                         <span class="course-code">CS 402</span>
                         <div class="course-footer">
                             <div class="instructor">Dr. Sarah Johnson</div>
-                            <div class="chat-icon">
-                                <i class="fas fa-comment-alt"></i>
-                                <span class="chat-count">99+</span>
+                            <div class="discussion-btn">
+                                <i class="fas fa-comment"></i>
+                                <span class="comment-count">99+</span>
                             </div>
                         </div>
                     </div>
@@ -598,17 +609,17 @@
 
                 <!-- Course Card 2 -->
                 <div class="course-card">
-                    <div class="course-thumbnail" style="background: linear-gradient(135deg, #3b82f6, #60a5fa);">
-                        <i class="fas fa-database"></i>
+                    <div class="course-thumbnail" style="background-color: #2ecc71;">
+                        <i class="fas fa-calculator"></i>
                     </div>
                     <div class="course-info">
-                        <div class="course-title">Database Systems</div>
-                        <span class="course-code">CS 305</span>
+                        <div class="course-title">Mathematics</div>
+                        <span class="course-code">MATH 210</span>
                         <div class="course-footer">
-                            <div class="instructor">Prof. Michael Chen</div>
-                            <div class="chat-icon">
-                                <i class="fas fa-comment-alt"></i>
-                                <span class="chat-count">99+</span>
+                            <div class="instructor">Dr. Robert Williams</div>
+                            <div class="discussion-btn">
+                                <i class="fas fa-comment"></i>
+                                <span class="comment-count">99+</span>
                             </div>
                         </div>
                     </div>
@@ -616,17 +627,17 @@
 
                 <!-- Course Card 3 -->
                 <div class="course-card">
-                    <div class="course-thumbnail" style="background: linear-gradient(135deg, #10b981, #34d399);">
-                        <i class="fas fa-brain"></i>
+                    <div class="course-thumbnail" style="background-color: #9b59b6;">
+                        <i class="fas fa-leaf"></i>
                     </div>
                     <div class="course-info">
-                        <div class="course-title">Artificial Intelligence</div>
-                        <span class="course-code">CS 410</span>
+                        <div class="course-title">Environmental Science</div>
+                        <span class="course-code">ENV 305</span>
                         <div class="course-footer">
-                            <div class="instructor">Dr. Elena Rodriguez</div>
-                            <div class="chat-icon">
-                                <i class="fas fa-comment-alt"></i>
-                                <span class="chat-count">99+</span>
+                            <div class="instructor">Prof. Elena Davis</div>
+                            <div class="discussion-btn">
+                                <i class="fas fa-comment"></i>
+                                <span class="comment-count">99+</span>
                             </div>
                         </div>
                     </div>
@@ -634,17 +645,17 @@
 
                 <!-- Course Card 4 -->
                 <div class="course-card">
-                    <div class="course-thumbnail" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
-                        <i class="fas fa-calculator"></i>
+                    <div class="course-thumbnail" style="background-color: #e74c3c;">
+                        <i class="fas fa-laptop-code"></i>
                     </div>
                     <div class="course-info">
-                        <div class="course-title">Discrete Mathematics</div>
-                        <span class="course-code">MATH 210</span>
+                        <div class="course-title">C Programming</div>
+                        <span class="course-code">CS 201</span>
                         <div class="course-footer">
-                            <div class="instructor">Dr. Robert Williams</div>
-                            <div class="chat-icon">
-                                <i class="fas fa-comment-alt"></i>
-                                <span class="chat-count">99+</span>
+                            <div class="instructor">Prof. Michael Chen</div>
+                            <div class="discussion-btn">
+                                <i class="fas fa-comment"></i>
+                                <span class="comment-count">99+</span>
                             </div>
                         </div>
                     </div>
@@ -652,17 +663,17 @@
 
                 <!-- Course Card 5 -->
                 <div class="course-card">
-                    <div class="course-thumbnail" style="background: linear-gradient(135deg, #ef4444, #f87171);">
-                        <i class="fas fa-network-wired"></i>
+                    <div class="course-thumbnail" style="background-color: #f39c12;">
+                        <i class="fas fa-comments"></i>
                     </div>
                     <div class="course-info">
-                        <div class="course-title">Computer Networks</div>
-                        <span class="course-code">CS 320</span>
+                        <div class="course-title">Technical Communication</div>
+                        <span class="course-code">COM 110</span>
                         <div class="course-footer">
-                            <div class="instructor">Prof. James Wilson</div>
-                            <div class="chat-icon">
-                                <i class="fas fa-comment-alt"></i>
-                                <span class="chat-count">99+</span>
+                            <div class="instructor">Dr. Lisa Anderson</div>
+                            <div class="discussion-btn">
+                                <i class="fas fa-comment"></i>
+                                <span class="comment-count">99+</span>
                             </div>
                         </div>
                     </div>
@@ -670,71 +681,61 @@
 
                 <!-- Course Card 6 -->
                 <div class="course-card">
-                    <div class="course-thumbnail" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
-                        <i class="fas fa-mobile-alt"></i>
+                    <div class="course-thumbnail" style="background-color: #1abc9c;">
+                        <i class="fas fa-database"></i>
                     </div>
                     <div class="course-info">
-                        <div class="course-title">Mobile App Development</div>
-                        <span class="course-code">CS 415</span>
+                        <div class="course-title">Fundamentals of Computers</div>
+                        <span class="course-code">CS 101</span>
                         <div class="course-footer">
-                            <div class="instructor">Dr. Lisa Anderson</div>
-                            <div class="chat-icon">
-                                <i class="fas fa-comment-alt"></i>
-                                <span class="chat-count">99+</span>
+                            <div class="instructor">Prof. James Wilson</div>
+                            <div class="discussion-btn">
+                                <i class="fas fa-comment"></i>
+                                <span class="comment-count">99+</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Announcements -->
-            <div class="section-title">
-                Academic Announcements
-            </div>
-            <div class="announcements">
+            <!-- Announcements Section -->
+            <div class="announcements-section">
+                <div class="section-title">Academic Announcements</div>
+                
                 <div class="announcement-item">
-                    <div class="announcement-title">
-                         Exam Schedule Released
-                        <span class="announcement-date">February, 2026</span>
-                    </div>
+                    <div class="announcement-title">Midterm Examination Schedule</div>
                     <div class="announcement-content">
-                        The exam schedule for Spring 2026 has been published. Please check your student portal for the exact dates and times of your exams. All exams will be conducted in the main examination hall.
+                        The midterm examination schedule for the current semester has been published. Please check the examination portal for your specific exam dates and venues.
                     </div>
+                    <div class="announcement-date">Posted: Dec 15, 2025</div>
                 </div>
                 
                 <div class="announcement-item">
-                    <div class="announcement-title">
-                        Registration for Fall 2026 Courses
-                        <span class="announcement-date">March 12, 2026</span>
-                    </div>
+                    <div class="announcement-title">Course Registration for Next Semester</div>
                     <div class="announcement-content">
-                        Course registration for Fall 2026 will open on April 1st. Please meet with your academic advisor to discuss your course selection before registration begins.
+                        Course registration for the upcoming semester will begin on April 1st. Please consult with your academic advisor before selecting your courses.
                     </div>
+                    <div class="announcement-date">Posted: Dec 12, 2025</div>
                 </div>
                 
                 <div class="announcement-item">
-                    <div class="announcement-title">
-                        Career Fair 2026
-                        <span class="announcement-date">March 10, 2026</span>
-                    </div>
+                    <div class="announcement-title">Library Hours Extension</div>
                     <div class="announcement-content">
-                        The annual university career fair will be held on April 5th. Over 50 companies from various industries will be participating. Update your resumes and prepare your portfolios.
+                        The main university library will extend its operating hours during the examination period. New hours: 8:00 AM to 11:00 PM, Monday through Saturday.
                     </div>
+                    <div class="announcement-date">Posted: March 10, 2023</div>
                 </div>
             </div>
         </div>
 
-        <!-- Sidebar -->
+        <!-- Right Sidebar -->
         <div class="sidebar">
             <!-- Calendar Widget -->
             <div class="sidebar-widget calendar">
-                <div class="widget-title">
-                    <i class="fas fa-calendar-alt"></i>
-                    Calendar
-                </div>
+                <div class="widget-title">Calendar</div>
                 
                 <div class="calendar-header">
-                    <div class="calendar-month">December 2025</div>
+                    <div class="calendar-month" id="current-month">December 2025</div>
                     <div class="calendar-nav">
                         <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
                         <button id="next-month"><i class="fas fa-chevron-right"></i></button>
@@ -758,74 +759,17 @@
 
             <!-- Upcoming Events -->
             <div class="sidebar-widget">
-                <div class="widget-title">
-                    <i class="fas fa-list-alt"></i>
-                    Upcoming Events
+                <div class="widget-title">Today's Schedule</div>
+                <div class="events-list" id="today-schedule">
+                    <!-- Today's events will be populated by JavaScript -->
                 </div>
-                
-                <div class="event-item">
-                    <div class="event-date">
-                        <div class="event-day">06</div>
-                        <div class="event-month">DEC</div>
-                    </div>
-                    <div class="event-details">
-                        <div class="event-title">Live Class Link – C Programming</div>
-                        <div class="event-time">
-                            <i class="far fa-clock"></i> 09:30 AM - 11:00 AM
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="event-item">
-                    <div class="event-date">
-                        <div class="event-day">06</div>
-                        <div class="event-month">DEC</div>
-                    </div>
-                    <div class="event-details">
-                        <div class="event-title">Introduction to Web Programming</div>
-                        <div class="event-time">
-                            <i class="far fa-clock"></i> 2:30 PM - 4:00 PM
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="event-item">
-                    <div class="event-date">
-                        <div class="event-day">06</div>
-                        <div class="event-month">DEC</div>
-                    </div>
-                    <div class="event-details">
-                        <div class="event-title">Database Systems</div>
-                        <div class="event-time">
-                            <i class="far fa-clock"></i> 04:30 PM - 05:30 PM
-                        </div>
-                    </div>
-                </div>
-                <div class="event-item">
-                    <div class="event-date">
-                        <div class="event-day">06</div>
-                        <div class="event-month">DEC</div>
-                    </div>
-                    <div class="event-details">
-                        <div class="event-title">Computer Networks</div>
-                        <div class="event-time">
-                            <i class="far fa-clock"></i> 08:30 PM - 9:30 PM
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="event-item">
-                    <div class="event-date">
-                        <div class="event-day">06</div>
-                        <div class="event-month">DEC</div>
-                    </div>
-                    <div class="event-details">
-                        <div class="event-title">AI Project Presentation</div>
-                        <div class="event-time">
-                            <i class="far fa-clock"></i> 06:30 PM - 8:00 PM
-                        </div>
-                        </div>
-                    </div>
+            </div>
+
+            <!-- Upcoming Events (Tomorrow) -->
+            <div class="sidebar-widget">
+                <div class="widget-title">Tomorrow's Schedule</div>
+                <div class="events-list" id="tomorrow-schedule">
+                    <!-- Tomorrow's events will be populated by JavaScript -->
                 </div>
             </div>
         </div>
@@ -833,18 +777,80 @@
 
     <!-- Footer -->
     <div class="footer">
-        <p>© 2025 MUJ ONLINE Learning Management System. All rights reserved. | Privacy Policy | Terms of Service</p>
+        <p>© 2023 University Learning Management System. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">Privacy Policy | Terms of Service | Contact Support</p>
     </div>
 
     <script>
+        // Weekly schedule data
+        const weeklySchedule = {
+            saturday: [
+                { time: "09:30 AM - 11:00 AM", subject: "Web Programming", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15603?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15603%2Factivity%2F911374%3FfilterOnDatesAndDepth%3D1" },
+                { time: "02:30 PM - 04:00 PM", subject: "C Programming", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15606?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15606%2Factivity%2F909087%3FfilterOnDatesAndDepth%3D1" },
+                { time: "04:30 PM - 06:00 PM", subject: "Environmental Science", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15602?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15602%2Factivity%2F923728%3FfilterOnDatesAndDepth%3D1" },
+                { time: "06:30 PM - 08:00 PM", subject: "Technical Communication", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15609?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15609%2Factivity%2F922402%3FfilterOnDatesAndDepth%3D1" },
+                { time: "08:30 PM - 10:00 PM", subject: "Mathematics", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15605?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15605%2Factivity%2F906168%3FfilterOnDatesAndDepth%3D1" }
+            ],
+            sunday: [
+                { time: "09:30 AM - 11:00 AM", subject: "C Programming", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15606?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15606%2Factivity%2F909087%3FfilterOnDatesAndDepth%3D1" },
+                { time: "02:30 PM - 04:00 PM", subject: "Environmental Science", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15602?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15602%2Factivity%2F923728%3FfilterOnDatesAndDepth%3D1" },
+                { time: "04:30 PM - 06:00 PM", subject: "Technical Communication", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15609?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15609%2Factivity%2F922402%3FfilterOnDatesAndDepth%3D1" },
+                { time: "06:30 PM - 08:00 PM", subject: "Mathematics", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15605?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15605%2Factivity%2F906168%3FfilterOnDatesAndDepth%3D1" },
+                { time: "08:30 PM - 10:00 PM", subject: "Web Programming", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15603?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15603%2Factivity%2F911374%3FfilterOnDatesAndDepth%3D1" }
+            ],
+            monday: [
+                { time: "10:00 AM - 12:00 PM", subject: "Q&A C Programming", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15606?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15606%2Factivity%2F909087%3FfilterOnDatesAndDepth%3D1" },
+                { time: "08:00 PM - 10:00 PM", subject: "Q&A Web Programming", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15603?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15603%2Factivity%2F911374%3FfilterOnDatesAndDepth%3D1" }
+            ],
+            tuesday: [
+                { time: "12:00 PM - 02:00 PM", subject: "Q&A Environmental Science", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15602?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15602%2Factivity%2F923728%3FfilterOnDatesAndDepth%3D1" },
+                { time: "03:00 PM - 05:00 PM", subject: "Q&A Mathematics", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15605?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15605%2Factivity%2F906168%3FfilterOnDatesAndDepth%3D1" },
+                { time: "08:00 PM - 09:30 PM", subject: "DB C Programming", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15606?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15606%2Factivity%2F909087%3FfilterOnDatesAndDepth%3D1" }
+            ],
+            wednesday: [
+                { time: "02:00 PM - 04:00 PM", subject: "Q&A Web Programming", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15603?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15603%2Factivity%2F911374%3FfilterOnDatesAndDepth%3D1" },
+                { time: "08:30 PM - 10:00 PM", subject: "DB Mathematics", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15605?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15605%2Factivity%2F906168%3FfilterOnDatesAndDepth%3D1" }
+            ],
+            thursday: [
+                { time: "02:30 PM - 04:30 PM", subject: "Q&A Environmental Science", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15602?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15602%2Factivity%2F923728%3FfilterOnDatesAndDepth%3D1" },
+                { time: "08:00 PM - 10:00 PM", subject: "Q&A Technical Communication", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15609?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15609%2Factivity%2F922402%3FfilterOnDatesAndDepth%3D1" }
+            ],
+            friday: [
+                { time: "10:00 AM - 12:00 PM", subject: "Fundamentals of Mathematics", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15605?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15605%2Factivity%2F906168%3FfilterOnDatesAndDepth%3D1" },
+                { time: "02:00 PM - 03:30 PM", subject: "Fundamentals of Computers", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15607?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15607%2Factivity%2F908599%3FfilterOnDatesAndDepth%3D1" },
+                { time: "04:00 PM - 05:30 PM", subject: "Web Programming", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15603?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15603%2Factivity%2F911374%3FfilterOnDatesAndDepth%3D1" },
+                { time: "08:00 PM - 10:00 PM", subject: "C Programming", isLink: true, url: "https://learning.onlinemanipal.com/d2l/le/enhancedSequenceViewer/15606?url=https%3A%2F%2F0ff6df2b-fb79-4be6-9d7f-9428edd0fa0a.sequences.api.brightspace.com%2F15606%2Factivity%2F909087%3FfilterOnDatesAndDepth%3D1" }
+            ]
+        };
+
+        // Day names mapping
+        const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+
         // Calendar functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const monthYearElement = document.querySelector('.calendar-month');
+            const currentDate = new Date();
+            const currentDay = currentDate.getDay(); // 0 = Sunday, 1 = Monday, etc.
+            const currentDayName = dayNames[currentDay];
+            
+            // Get tomorrow's date
+            const tomorrowDate = new Date(currentDate);
+            tomorrowDate.setDate(tomorrowDate.getDate() + 1);
+            const tomorrowDay = tomorrowDate.getDay();
+            const tomorrowDayName = dayNames[tomorrowDay];
+            
+            // Display today's schedule
+            displaySchedule(currentDayName, 'today-schedule', 'Today');
+            
+            // Display tomorrow's schedule
+            displaySchedule(tomorrowDayName, 'tomorrow-schedule', 'Tomorrow');
+            
+            // Calendar setup
+            const monthYearElement = document.getElementById('current-month');
             const calendarDaysElement = document.getElementById('calendar-days');
             const prevMonthButton = document.getElementById('prev-month');
             const nextMonthButton = document.getElementById('next-month');
             
-            let currentDate = new Date(2023, 2, 1); // March 2023
+            let calendarDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
             
             function renderCalendar(date) {
                 const year = date.getFullYear();
@@ -900,41 +906,91 @@
             }
             
             // Initialize calendar
-            renderCalendar(currentDate);
+            renderCalendar(calendarDate);
             
             // Event listeners for previous/next month buttons
             prevMonthButton.addEventListener('click', function() {
-                currentDate.setMonth(currentDate.getMonth() - 1);
-                renderCalendar(currentDate);
+                calendarDate.setMonth(calendarDate.getMonth() - 1);
+                renderCalendar(calendarDate);
             });
             
             nextMonthButton.addEventListener('click', function() {
-                currentDate.setMonth(currentDate.getMonth() + 1);
-                renderCalendar(currentDate);
+                calendarDate.setMonth(calendarDate.getMonth() + 1);
+                renderCalendar(calendarDate);
             });
             
             // Tab switching functionality
             const tabs = document.querySelectorAll('.tab');
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
-                    // Remove active class from all tabs
                     tabs.forEach(t => t.classList.remove('active'));
-                    // Add active class to clicked tab
                     this.classList.add('active');
                 });
             });
             
-            // Course card hover effect enhancement
-            const courseCards = document.querySelectorAll('.course-card');
-            courseCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-8px)';
-                });
+            // Function to display schedule for a specific day
+            function displaySchedule(dayName, elementId, headerText) {
+                const scheduleContainer = document.getElementById(elementId);
+                const schedule = weeklySchedule[dayName] || [];
                 
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
+                // Create day header
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'event-day-header';
+                dayHeader.textContent = headerText + ' (' + capitalizeFirstLetter(dayName) + ')';
+                scheduleContainer.appendChild(dayHeader);
+                
+                // Create event items
+                if (schedule.length === 0) {
+                    const noEvents = document.createElement('div');
+                    noEvents.className = 'event-item';
+                    noEvents.textContent = 'No classes scheduled';
+                    noEvents.style.color = '#7f8c8d';
+                    noEvents.style.fontStyle = 'italic';
+                    scheduleContainer.appendChild(noEvents);
+                } else {
+                    schedule.forEach(event => {
+                        const eventItem = document.createElement('div');
+                        eventItem.className = 'event-item';
+                        
+                        const eventTime = document.createElement('div');
+                        eventTime.className = 'event-time';
+                        eventTime.textContent = event.time;
+                        
+                        let eventTitle;
+                        if (event.isLink) {
+                            eventTitle = document.createElement('a');
+                            eventTitle.className = 'event-title';
+                            eventTitle.textContent = event.subject;
+                            // If a URL is provided use it and open in a new tab
+                            if (event.url) {
+                                eventTitle.href = event.url;
+                                eventTitle.target = '_blank';
+                                eventTitle.rel = 'noopener noreferrer';
+                            } else {
+                                // Fallback: keep href as '#', show alert if clicked
+                                eventTitle.href = '#';
+                                eventTitle.addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    alert('No URL configured for ' + event.subject);
+                                });
+                            }
+                        } else {
+                            eventTitle = document.createElement('div');
+                            eventTitle.className = 'event-title';
+                            eventTitle.textContent = event.subject;
+                        }
+                        
+                        eventItem.appendChild(eventTime);
+                        eventItem.appendChild(eventTitle);
+                        scheduleContainer.appendChild(eventItem);
+                    });
+                }
+            }
+            
+            // Helper function to capitalize first letter
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
         });
     </script>
 </body>
