@@ -1,0 +1,2274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS - Homepage - Manipal University Jaipur</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0 auto;
+            max-width: 1920px;
+        }
+
+        /* Add padding to all main sections */
+        .content-wrapper {
+            padding: 0 16px;
+        }
+
+        /* Top Navigation Bar */
+        .top-nav {
+            background: white;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #c1502e 0%, #e67e22 100%);
+            border-radius: 4px;
+        }
+
+        .university-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .university-subtitle {
+            font-size: 9px;
+            color: #666;
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 32px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .nav-link {
+            font-size: 15px;
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #c1502e;
+        }
+
+        .nav-link.active {
+            color: #c1502e;
+            font-weight: 600;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .icon-btn {
+            width: 24px;
+            height: 24px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-btn:hover {
+            background: #d0d0d0;
+        }
+
+        .icon-btn::before {
+            content: '';
+            width: 16px;
+            height: 16px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .icon-apps::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'%3E%3Crect x='4' y='4' width='7' height='7'/%3E%3Crect x='13' y='4' width='7' height='7'/%3E%3Crect x='4' y='13' width='7' height='7'/%3E%3Crect x='13' y='13' width='7' height='7'/%3E%3C/svg%3E");
+        }
+
+        .icon-chat::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'%3E%3Cpath d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/%3E%3C/svg%3E");
+        }
+
+        .icon-notification::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'%3E%3Cpath d='M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9'/%3E%3Cpath d='M13.73 21a2 2 0 0 1-3.46 0'/%3E%3C/svg%3E");
+        }
+
+        .icon-settings::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Cpath d='M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24'/%3E%3C/svg%3E");
+        }
+
+        .dropdown-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dropdown-icon::before {
+            content: '▼';
+            font-size: 10px;
+            color: #666;
+        }
+
+        .calendar-nav {
+            width: 24px;
+            height: 24px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .calendar-nav::before {
+            content: '▶';
+            font-size: 10px;
+            color: #666;
+        }
+
+        .announcements-toggle {
+            width: 20px;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .announcements-toggle::before {
+            content: '▼';
+            font-size: 10px;
+            color: #666;
+        }
+
+        .user-avatar {
+            width: 42px;
+            height: 42px;
+            background: #0d7377;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .user-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            background-image: url('lms1.jpeg');
+            height: 220px;
+            display: flex;
+            align-items: left;
+            justify-content: left;
+            padding: 0 60px;
+            position: relative;
+            overflow: hidden;
+            margin: 36px 99px;
+            border-radius: 0;
+        }
+
+        /* Add your background image here */
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('lms1.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: left;
+            justify-content: left;
+            width: 100%;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-text {
+            font-size: 48px;
+            font-weight: 400;
+            color: rgb(255, 255, 255);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-illustration {
+            width: 300px;
+            height: 180px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            z-index: 2;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 32px 48px;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 32px;
+        }
+
+        /* Calendar View Page */
+        .calendar-page {
+            display: none;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 32px 48px;
+        }
+
+        .calendar-page.active {
+            display: block;
+        }
+
+        .calendar-controls {
+            background: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .view-tabs {
+            display: flex;
+            gap: 0;
+            background: #f0f0f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .view-tab {
+            padding: 10px 24px;
+            font-size: 14px;
+            color: #666;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .view-tab.active {
+            background: #4a4a4a;
+            color: white;
+        }
+
+        .calendar-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: transparent;
+            border: none;
+            color: #1976d2;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s;
+            border-radius: 4px;
+        }
+
+        .action-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .search-box {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        .calendar-main {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 24px;
+        }
+
+        .day-view {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .day-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .day-nav {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-arrow {
+            width: 32px;
+            height: 32px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-arrow:hover {
+            background: #e0e0e0;
+        }
+
+        .current-date {
+            font-size: 24px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .calendar-filter {
+            color: #1976d2;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .time-slots {
+            padding: 24px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .time-slot {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            min-height: 60px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .time-label {
+            padding: 12px 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .all-day-label {
+            padding: 12px 0;
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .event-container {
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .event-block {
+            background: #c8e6c9;
+            border-left: 4px solid #4caf50;
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .event-block:hover {
+            transform: translateX(4px);
+        }
+
+        .event-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2e7d32;
+            margin-bottom: 4px;
+        }
+
+        .event-time {
+            font-size: 12px;
+            color: #558b2f;
+        }
+
+        .mini-calendar {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 20px;
+        }
+
+        .mini-calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .mini-calendar-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .mini-nav {
+            display: flex;
+            gap: 8px;
+        }
+
+        .mini-nav-btn {
+            width: 28px;
+            height: 28px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .mini-calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+        }
+
+        .day-name {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            padding: 8px 0;
+            font-weight: 600;
+        }
+
+        .mini-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .mini-day:hover {
+            background: #f0f0f0;
+        }
+
+        .mini-day.has-event::after {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: #1976d2;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 4px;
+        }
+
+        .mini-day.selected {
+            background: #4a4a4a;
+            color: white;
+            font-weight: 600;
+        }
+
+        .mini-day.other-month {
+            color: #ccc;
+        }
+
+        .tasks-section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .tasks-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .tasks-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .task-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* Left Column */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 16px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 24px;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            font-size: 15px;
+            color: #666;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+
+        .tab.active {
+            color: #1976d2;
+            border-bottom-color: #1976d2;
+            font-weight: 500;
+        }
+
+        .tab:hover {
+            color: #333;
+        }
+
+        /* Course Cards Grid */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 160px;
+            background: linear-gradient(135deg, #c1502e 0%, #e67e22 50%, #f39c12 100%);
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Add background image to course cards */
+        .course-card[data-course="intro"]  .course-image {
+            background-image: url("lms2.jpeg");
+        }
+
+        .course-card[data-course="web-lab"] .course-image {
+            background-image: url("weblab.jpeg");
+        }
+
+        .course-card[data-course="c-lab"] .course-image {
+            background-image: url("clab.jpeg");
+        }
+
+        .course-card[data-course="env"] .course-image {
+            background-image: url("evs.jpeg");
+        }
+
+        .course-card[data-course="web"] .course-image {
+            background-image: url("webpro.jpeg");
+        }
+
+        .course-card[data-course="computers"] .course-image {
+            background-image: url("comp.jpeg");
+        }
+
+        .course-card[data-course="c-prog"] .course-image {
+            background-image: url("cpro.jpeg");
+        }
+
+        .course-card[data-course="tech-comm"] .course-image {
+            background-image: url("tech.jpeg");
+        }
+
+        .course-card[data-course="math"] .course-image {
+            background-image: url("math.jpeg");
+        }
+
+        .course-content {
+            padding: 20px;
+        }
+
+        .course-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 8px;
+        }
+
+        .course-code {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .notification-badge {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: #ff5722;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 11px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .notification-badge::after {
+            content: '💬';
+            font-size: 14px;
+        }
+
+        .view-all-link {
+            color: #1976d2;
+            font-size: 15px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .view-all-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Right Column - Sidebar */
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .dropdown-icon {
+            width: 20px;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 3px;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-link {
+            color: #1976d2;
+            font-size: 15px;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        .card-link:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Calendar */
+        .calendar-header {
+            padding: 16px 20px;
+            background: #fafafa;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .calendar-date {
+            font-size: 15px;
+            font-weight: 500;
+            color: #000;
+        }
+
+        .calendar-nav {
+            width: 24px;
+            height: 24px;
+            background: #e0e0e0;
+            border-radius: 3px;
+        }
+
+        .upcoming-events {
+            padding: 0;
+        }
+
+        .events-header {
+            padding: 16px 20px;
+            background: #fafafa;
+            font-size: 14px;
+            font-weight: 600;
+            color: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .event-item {
+            padding: 16px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            gap: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .event-item:hover {
+            background: #f9f9f9;
+        }
+
+        .event-item:last-child {
+            border-bottom: none;
+        }
+
+        .event-date {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 50px;
+        }
+
+        .event-month {
+            font-size: 12px;
+            font-weight: 600;
+            color: #e67e22;
+        }
+
+        .event-day {
+            font-size: 24px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .event-details {
+            flex: 1;
+        }
+
+        .event-time {
+            font-size: 13px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 4px;
+        }
+
+        .event-title-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #000;
+            margin-bottom: 2px;
+        }
+
+        .event-course {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .event-course-link {
+            color: #666;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .event-course-link:hover {
+            color: #333;
+        }
+
+        /* Announcements Section */
+        .announcements-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 48px 32px 48px;
+        }
+
+        .announcements-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .announcements-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .announcements-toggle {
+            width: 20px;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 3px;
+        }
+
+        .announcement-link {
+            color: #1976d2;
+            font-size: 20px;
+            text-decoration: none;
+            font-weight: 400;
+        }
+
+        .announcement-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Image placeholder styling */
+        .img-placeholder {
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 12px;
+        }
+
+        /* Page visibility */
+        .home-page.hidden {
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                padding: 24px 32px;
+            }
+
+            .course-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .right-column {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .calendar-main {
+                grid-template-columns: 1fr;
+            }
+
+            .mini-calendar {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-center {
+                display: none;
+            }
+
+            .top-nav {
+                padding: 0 20px;
+                height: 60px;
+            }
+
+            .logo-placeholder {
+                width: 40px;
+                height: 40px;
+            }
+
+            .university-name {
+                font-size: 13px;
+            }
+
+            .university-subtitle {
+                font-size: 8px;
+            }
+
+            .nav-right {
+                gap: 12px;
+            }
+
+            .icon-btn {
+                width: 20px;
+                height: 20px;
+            }
+
+            .icon-btn::before {
+                width: 14px;
+                height: 14px;
+            }
+
+            .user-avatar {
+                width: 36px;
+                height: 36px;
+                font-size: 12px;
+            }
+
+            .hero-banner {
+                height: 140px;
+                padding: 0 20px;
+                margin: 0 12px;
+            }
+
+            .hero-text {
+                font-size: 28px;
+            }
+
+            .main-container {
+                padding: 20px 24px;
+            }
+
+            .section-title {
+                font-size: 20px;
+                margin-bottom: 12px;
+            }
+
+            .tabs {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                margin-bottom: 20px;
+            }
+
+            .tabs::-webkit-scrollbar {
+                display: none;
+            }
+
+            .tab {
+                white-space: nowrap;
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .course-card {
+                max-width: 500px;
+                margin: 0 auto;
+                width: 100%;
+            }
+
+            .course-image {
+                height: 140px;
+            }
+
+            .course-content {
+                padding: 16px;
+            }
+
+            .course-title {
+                font-size: 16px;
+            }
+
+            .course-code {
+                font-size: 12px;
+            }
+
+            .sidebar-card {
+                border-radius: 6px;
+            }
+
+            .card-header {
+                padding: 14px 16px;
+            }
+
+            .card-title {
+                font-size: 15px;
+            }
+
+            .card-content {
+                padding: 16px;
+            }
+
+            .card-link {
+                font-size: 14px;
+            }
+
+            .event-item {
+                padding: 14px 16px;
+            }
+
+            .event-month {
+                font-size: 11px;
+            }
+
+            .event-day {
+                font-size: 20px;
+            }
+
+            .event-time {
+                font-size: 12px;
+            }
+
+            .event-title-text {
+                font-size: 13px;
+            }
+
+            .event-course-link {
+                font-size: 12px;
+            }
+
+            .announcements-section {
+                padding: 0 24px 32px 24px;
+            }
+
+            .announcements-title {
+                font-size: 18px;
+            }
+
+            .announcement-link {
+                font-size: 16px;
+            }
+
+            .calendar-page {
+                padding: 20px 24px;
+            }
+
+            .calendar-controls {
+                flex-direction: column;
+                gap: 16px;
+                padding: 16px;
+            }
+
+            .calendar-actions {
+                width: 100%;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
+
+            .search-box {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .view-tab {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+
+            .day-header {
+                padding: 16px;
+                flex-direction: column;
+                gap: 12px;
+                align-items: flex-start;
+            }
+
+            .current-date {
+                font-size: 20px;
+            }
+
+            .time-slots {
+                padding: 16px;
+            }
+
+            .time-slot {
+                grid-template-columns: 80px 1fr;
+                min-height: 50px;
+            }
+
+            .time-label, .all-day-label {
+                font-size: 13px;
+                padding: 10px 0;
+            }
+
+            .event-block {
+                padding: 10px 12px;
+            }
+
+            .mini-calendar {
+                padding: 16px;
+            }
+
+            .mini-calendar-title {
+                font-size: 15px;
+            }
+
+            .day-name {
+                font-size: 11px;
+                padding: 6px 0;
+            }
+
+            .mini-day {
+                font-size: 12px;
+            }
+
+            .tasks-section {
+                padding: 16px;
+            }
+
+            .tasks-title {
+                font-size: 16px;
+            }
+
+            .task-input {
+                padding: 10px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-nav {
+                padding: 0 12px;
+                height: 55px;
+            }
+
+            .logo-placeholder {
+                width: 35px;
+                height: 35px;
+            }
+
+            .university-name {
+                font-size: 11px;
+            }
+
+            .university-subtitle {
+                display: none;
+            }
+
+            .nav-right {
+                gap: 8px;
+            }
+
+            .user-name {
+                display: none;
+            }
+
+            .icon-btn {
+                width: 18px;
+                height: 18px;
+            }
+
+            .icon-btn::before {
+                width: 12px;
+                height: 12px;
+            }
+
+            .user-avatar {
+                width: 32px;
+                height: 32px;
+                font-size: 11px;
+            }
+
+            .hero-banner {
+                height: 120px;
+                margin: 0 8px;
+                padding: 0 16px;
+            }
+
+            .hero-text {
+                font-size: 22px;
+            }
+
+            .main-container {
+                padding: 16px;
+            }
+
+            .section-title {
+                font-size: 18px;
+            }
+
+            .tab {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+
+            .course-grid {
+                gap: 12px;
+            }
+
+            .course-image {
+                height: 120px;
+            }
+
+            .course-content {
+                padding: 14px;
+            }
+
+            .course-title {
+                font-size: 15px;
+            }
+
+            .notification-badge {
+                padding: 4px 10px;
+                font-size: 10px;
+                bottom: 8px;
+                left: 8px;
+            }
+
+            .notification-badge::after {
+                font-size: 12px;
+            }
+
+            .card-header {
+                padding: 12px 14px;
+            }
+
+            .card-title {
+                font-size: 14px;
+            }
+
+            .card-content {
+                padding: 14px;
+            }
+
+            .card-link {
+                font-size: 13px;
+                margin-bottom: 10px;
+            }
+
+            .calendar-header {
+                padding: 12px 14px;
+            }
+
+            .calendar-date {
+                font-size: 14px;
+            }
+
+            .events-header {
+                padding: 12px 14px;
+                font-size: 13px;
+            }
+
+            .event-item {
+                padding: 12px 14px;
+            }
+
+            .event-month {
+                font-size: 10px;
+            }
+
+            .event-day {
+                font-size: 18px;
+            }
+
+            .event-time {
+                font-size: 11px;
+            }
+
+            .event-title-text {
+                font-size: 12px;
+            }
+
+            .event-course-link {
+                font-size: 11px;
+            }
+
+            .announcements-section {
+                padding: 0 16px 24px 16px;
+            }
+
+            .announcements-title {
+                font-size: 16px;
+            }
+
+            .announcement-link {
+                font-size: 14px;
+            }
+
+            .calendar-page {
+                padding: 16px;
+            }
+
+            .calendar-controls {
+                padding: 12px;
+            }
+
+            .view-tabs {
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .view-tab {
+                padding: 8px 14px;
+                font-size: 12px;
+            }
+
+            .calendar-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .action-btn {
+                padding: 8px 12px;
+                font-size: 13px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .search-box {
+                width: 100%;
+                max-width: 100%;
+                font-size: 13px;
+            }
+
+            .day-header {
+                padding: 12px;
+            }
+
+            .current-date {
+                font-size: 18px;
+            }
+
+            .nav-arrow {
+                width: 28px;
+                height: 28px;
+                font-size: 16px;
+            }
+
+            .calendar-filter {
+                font-size: 13px;
+            }
+
+            .time-slots {
+                padding: 12px;
+                max-height: 500px;
+            }
+
+            .time-slot {
+                grid-template-columns: 70px 1fr;
+                min-height: 45px;
+            }
+
+            .time-label, .all-day-label {
+                font-size: 12px;
+                padding: 8px 0;
+            }
+
+            .event-block {
+                padding: 8px 10px;
+                margin-bottom: 6px;
+            }
+
+            .event-title {
+                font-size: 12px;
+            }
+
+            .event-time {
+                font-size: 11px;
+            }
+
+            .mini-calendar {
+                padding: 14px;
+            }
+
+            .mini-calendar-header {
+                margin-bottom: 12px;
+            }
+
+            .mini-calendar-title {
+                font-size: 14px;
+            }
+
+            .mini-nav-btn {
+                width: 24px;
+                height: 24px;
+                font-size: 14px;
+            }
+
+            .mini-calendar-grid {
+                gap: 2px;
+            }
+
+            .day-name {
+                font-size: 10px;
+                padding: 4px 0;
+            }
+
+            .mini-day {
+                font-size: 11px;
+            }
+
+            .mini-day.has-event::after {
+                width: 3px;
+                height: 3px;
+                bottom: 2px;
+            }
+
+            .tasks-section {
+                padding: 14px;
+                margin-top: 16px;
+            }
+
+            .tasks-header {
+                margin-bottom: 12px;
+            }
+
+            .tasks-title {
+                font-size: 15px;
+            }
+
+            .task-input {
+                padding: 10px;
+                font-size: 13px;
+            }
+
+            .dropdown-icon {
+                width: 16px;
+                height: 16px;
+            }
+
+            .dropdown-icon::before {
+                font-size: 8px;
+            }
+        }
+
+        /* Extra small devices (landscape phones) */
+        @media (max-width: 360px) {
+            .hero-text {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 16px;
+            }
+
+            .course-title {
+                font-size: 14px;
+            }
+
+            .tab {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .event-day {
+                font-size: 16px;
+            }
+
+            .current-date {
+                font-size: 16px;
+            }
+        }
+
+        /* Tablet landscape */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                padding: 28px 36px;
+            }
+
+            .course-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .right-column {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                max-width: 100%;
+            }
+
+            .sidebar-card {
+                height: fit-content;
+            }
+        }
+
+        /* Large tablets and small desktops */
+        @media (min-width: 1025px) and (max-width: 1366px) {
+            .main-container {
+                padding: 32px 40px;
+            }
+
+            .course-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .course-card,
+            .event-item,
+            .icon-btn,
+            .tab,
+            .nav-link,
+            .action-btn,
+            .mini-day {
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+            }
+
+            .course-card:active {
+                transform: scale(0.98);
+            }
+
+            .icon-btn:active {
+                transform: scale(0.9);
+            }
+
+            /* Increase touch target sizes */
+            .icon-btn {
+                min-width: 44px;
+                min-height: 44px;
+            }
+
+            .tab {
+                min-height: 44px;
+            }
+
+            .mini-day {
+                min-height: 40px;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .top-nav,
+            .hero-banner,
+            .tabs,
+            .calendar-controls,
+            .action-btn,
+            .search-box {
+                display: none;
+            }
+
+            .main-container,
+            .calendar-page {
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .course-card,
+            .sidebar-card {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <div class="logo-placeholder img-placeholder"></div>
+            <div>
+                <div class="university-name">MANIPAL</div>
+                <div class="university-name">UNIVERSITY JAIPUR</div>
+                <div class="university-subtitle">University under Section 2(f) of the UGC Act</div>
+            </div>
+        </div>
+        
+        <div class="nav-center">
+            <a class="nav-link" onclick="showPage('home')">Announcements</a>
+            <a class="nav-link" onclick="showPage('calendar')">Calendar</a>
+            <a class="nav-link">E-Library ▾</a>
+        </div>
+        
+        <div class="nav-right">
+            <div class="icon-btn icon-apps"></div>
+            <div class="icon-btn icon-chat"></div>
+            <div class="icon-btn icon-notification"></div>
+            <div class="user-avatar">MS</div>
+            <span class="user-name">Manipal University</span>
+            <div class="icon-btn icon-settings"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <div class="hero-content">
+            <h1 class="hero-text" id="welcomeText">Welcome To Manipal University</h1>
+        </div>
+    </div>
+
+    <!-- HOME PAGE -->
+    <div class="home-page">
+        <!-- Main Container -->
+        <div class="main-container">
+            <!-- Left Column -->
+            <div class="left-column">
+                <h2 class="section-title">My Courses</h2>
+                
+                <!-- Tabs -->
+                <div class="tabs">
+                    <div class="tab">All</div>
+                    <div class="tab active">BCA_Sem1</div>
+                    <div class="tab">Career Services</div>
+                    <div class="tab">Foundation Courses</div>
+                </div>
+
+                <!-- Course Cards Grid -->
+                <div class="course-grid">
+                    <!-- Card 1 -->
+                    <div class="course-card" data-course="intro">
+                        <div class="course-image">
+                            <div class="notification-badge">99+</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-title">Pre-Semester Introductory Material</div>
+                            <div class="course-code">INTROBCA_B10S1_JUL2025</div>
+                            <div class="course-code">• BCA_Sem1</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="course-card" data-course="web-lab">
+                        <div class="course-image">
+                            <div class="notification-badge">99+</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-title">Web Programming Lab</div>
+                            <div class="course-code">DCA1132_B10S1_JUL2025</div>
+                            <div class="course-code">• BCA_Sem1</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="course-card" data-course="c-lab">
+                        <div class="course-image">
+                            <div class="notification-badge">99+</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-title">C Programming Lab</div>
+                            <div class="course-code">DCA1131_B10S1_JUL2025</div>
+                            <div class="course-code">• BCA_Sem1</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="course-card" data-course="env">
+                        <div class="course-image">
+                            <div class="notification-badge">99+</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-title">Environmental Science</div>
+                            <div class="course-code">DCA1110_B10S1_JUL2025</div>
+                            <div class="course-code">• BCA_Sem1</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="course-card" data-course="web">
+                        <div class="course-image">
+                            <div class="notification-badge">99+</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-title">Introduction to Web Programming</div>
+                            <div class="course-code">DCA1109_B10S1_JUL2025</div>
+                            <div class="course-code">• BCA_Sem1</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="course-card" data-course="computers">
+                        <div class="course-image">
+                            <div class="notification-badge">99+</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-title">Fundamentals of Computers & Digital Systems</div>
+                            <div class="course-code">DCA1108_B10S1_JUL2025</div>
+                            <div class="course-code">• BCA_Sem1</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 7 -->
+                    <div class="course-card" data-course="c-prog">
+                        <div class="course-image">
+                            <div class="notification-badge">99+</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-title">C Programming</div>
+                            <div class="course-code">DCA1107_B10S1_JUL2025</div>
+                            <div class="course-code">• BCA_Sem1</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 8 -->
+                    <div class="course-card" data-course="tech-comm">
+                        <div class="course-image">
+                            <div class="notification-badge">99+</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-title">Technical Communication</div>
+                            <div class="course-code">DCA1106_B10S1_JUL2025</div>
+                            <div class="course-code">• BCA_Sem1</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 9 -->
+                    <div class="course-card" data-course="math">
+                        <div class="course-image">
+                            <div class="notification-badge">99+</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-title">Fundamentals of Mathematics</div>
+                            <div class="course-code">DCA1105_B10S1_JUL2025</div>
+                            <div class="course-code">• BCA_Sem1</div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="view-all-link">View All Courses (9)</a>
+            </div>
+
+            <!-- Right Column - Sidebar -->
+            <div class="right-column">
+                <!-- PDF Schedule Card -->
+                <div class="sidebar-card">
+                    <div class="card-header">
+                        <span class="card-title">MUJ Live DB Schedule - BCA_1_...</span>
+                        <div class="dropdown-icon"></div>
+                    </div>
+                    <div class="card-content">
+                        <a href="#" class="card-link">MUJ Live DB Schedule - BCA_1_ Nov 2025 _updated.pdf</a>
+                    </div>
+                </div>
+
+                <!-- Calendar Card -->
+                <div class="sidebar-card">
+                    <div class="card-header">
+                        <span class="card-title">Calendar</span>
+                        <div class="dropdown-icon"></div>
+                    </div>
+                    <div class="calendar-header" onclick="showPage('calendar')">
+                        <span class="calendar-date" id="currentDate"></span>
+                        <div class="calendar-nav"></div>
+                    </div>
+                    <div class="upcoming-events">
+                        <div class="events-header">
+                            <span>Upcoming events</span>
+                            <div class="dropdown-icon"></div>
+                        </div>
+                        
+                        <div id="upcomingEventsList"></div>
+                    </div>
+                </div>
+
+                <!-- Examination Card -->
+                <div class="sidebar-card">
+                    <div class="card-header">
+                        <span class="card-title">Term End Examination Feb - Mar ...</span>
+                        <div class="dropdown-icon"></div>
+                    </div>
+                    <div class="card-content">
+                        <a href="#" class="card-link">Examination Notification February - March 2026</a>
+                    </div>
+                </div>
+
+                <!-- IA Submission Card -->
+                <div class="sidebar-card">
+                    <div class="card-header">
+                        <span class="card-title">IA Submission</span>
+                        <div class="dropdown-icon"></div>
+                    </div>
+                    <div class="card-content">
+                        <a href="#" class="card-link">IA Submission Walkthrough</a>
+                        <a href="#" class="card-link">Practical Assignment Submission Walkthrough</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Announcements Section -->
+        <div class="announcements-section">
+            <div class="announcements-header">
+                <h2 class="announcements-title">Announcements</h2>
+                <div class="announcements-toggle"></div>
+            </div>
+            <a href="#" class="announcement-link">Academic Calendar for the Session of Jul - Aug 2025</a>
+        </div>
+    </div>
+
+    <!-- CALENDAR PAGE -->
+    <div class="calendar-page">
+        <!-- Calendar Controls -->
+        <div class="calendar-controls">
+            <div class="view-tabs">
+                <button class="view-tab">Agenda</button>
+                <button class="view-tab active">Day</button>
+                <button class="view-tab">Week</button>
+                <button class="view-tab">Month</button>
+                <button class="view-tab">List</button>
+            </div>
+            
+            <div class="calendar-actions">
+                <button class="action-btn">🖨️ Print</button>
+                <button class="action-btn">⚙️ Settings</button>
+                <button class="action-btn">⭐ Subscribe</button>
+                <input type="text" class="search-box" placeholder="Search Events">
+            </div>
+        </div>
+
+        <!-- Calendar Main Content -->
+        <div class="calendar-main">
+            <!-- Day View -->
+            <div class="day-view">
+                <div class="day-header">
+                    <div class="day-nav">
+                        <button class="nav-arrow" onclick="changeDay(-1)">‹</button>
+                        <h2 class="current-date" id="calendarCurrentDate"></h2>
+                        <button class="nav-arrow" onclick="changeDay(1)">›</button>
+                    </div>
+                    <div class="calendar-filter">All Calendars ( 13 ) ▾</div>
+                </div>
+                
+                <div class="time-slots" id="timeSlots">
+                    <div class="time-slot">
+                        <div class="all-day-label">all day</div>
+                        <div class="event-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mini Calendar & Tasks -->
+            <div>
+                <!-- Mini Calendar -->
+                <div class="mini-calendar">
+                    <div class="mini-calendar-header">
+                        <h3 class="mini-calendar-title" id="miniCalendarTitle"></h3>
+                        <div class="mini-nav">
+                            <button class="mini-nav-btn" onclick="changeMiniMonth(-1)">‹</button>
+                            <button class="mini-nav-btn" onclick="changeMiniMonth(1)">›</button>
+                        </div>
+                    </div>
+                    
+                    <div class="mini-calendar-grid" id="miniCalendarGrid"></div>
+                </div>
+
+                <!-- Tasks Section -->
+                <div class="tasks-section">
+                    <div class="tasks-header">
+                        <h3 class="tasks-title">Tasks</h3>
+                        <div class="dropdown-icon"></div>
+                    </div>
+                    <input type="text" class="task-input" placeholder="Add a task...">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============= USER CONFIGURATION =============
+        const USER_NAME = 'Muhammed Sinan'; // Change this to student name or leave empty for university name
+        
+        // ============= EVENT CONFIGURATION =============
+        // ADD YOUR EVENTS HERE - Format: { date: 'YYYY-MM-DD', time: '12:00 PM', title: 'Event Title', course: 'Course Name', link: 'https://your-link.com' }
+        const EVENTS = [
+            { date: '2025-12-21', time: '8:30 PM', title: 'Live Class Link', course: 'Environmental Science', link: 'https://example.com/env-science' },
+            { date: '2025-12-22', time: '3:00 PM', title: 'Live Q&A Session', course: 'Technical Communication', link: 'https://example.com/tech-comm' },
+            { date: '2025-12-23', time: '11:00 AM', title: 'Live Q&A Session', course: 'Fundamentals of Mathematics', link: 'https://example.com/math' },
+            { date: '2025-12-24', time: '2:30 PM', title: 'Live Class Link', course: 'C Programming', link: 'https://example.com/c-programming' },
+            { date: '2025-12-25', time: '10:00 AM', title: 'Live Class Link', course: 'Web Programming', link: 'https://example.com/web-prog' },
+            // ADD MORE EVENTS HERE
+        ];
+
+        // ============= DAY-SPECIFIC EVENTS CONFIGURATION =============
+        // Add recurring weekly events here
+        const WEEKLY_EVENTS = [
+            // SATURDAY (day: 6)
+            { day: 6, time: '09:30 AM', timeEnd: '11:00 AM', title: 'Live Class', course: 'Web Programming', link: 'https://example.com/web-programming' },
+            { day: 6, time: '02:30 PM', timeEnd: '04:00 PM', title: 'Live Class', course: 'C Programming', link: 'https://example.com/c-programming' },
+            { day: 6, time: '04:30 PM', timeEnd: '06:00 PM', title: 'Live Class', course: 'Environmental Science', link: 'https://example.com/environmental-science' },
+            { day: 6, time: '06:30 PM', timeEnd: '08:00 PM', title: 'Live Class', course: 'Technical Communication', link: 'https://example.com/technical-communication' },
+            { day: 6, time: '08:30 PM', timeEnd: '10:00 PM', title: 'Live Class', course: 'Mathematics', link: 'https://example.com/mathematics' },
+            
+            // SUNDAY (day: 0) - Same times, shuffled subjects
+            { day: 0, time: '09:30 AM', timeEnd: '11:00 AM', title: 'Live Class', course: 'C Programming', link: 'https://example.com/c-programming' },
+            { day: 0, time: '02:30 PM', timeEnd: '04:00 PM', title: 'Live Class', course: 'Environmental Science', link: 'https://example.com/environmental-science' },
+            { day: 0, time: '04:30 PM', timeEnd: '06:00 PM', title: 'Live Class', course: 'Mathematics', link: 'https://example.com/mathematics' },
+            { day: 0, time: '06:30 PM', timeEnd: '08:00 PM', title: 'Live Class', course: 'Web Programming', link: 'https://example.com/web-programming' },
+            { day: 0, time: '08:30 PM', timeEnd: '10:00 PM', title: 'Live Class', course: 'Technical Communication', link: 'https://example.com/technical-communication' },
+            
+            // MONDAY (day: 1)
+            { day: 1, time: '10:00 AM', timeEnd: '12:00 PM', title: 'Q&A Session', course: 'C Programming', link: 'https://example.com/c-programming' },
+            { day: 1, time: '08:00 PM', timeEnd: '10:00 PM', title: 'Q&A Session', course: 'Web Programming', link: 'https://example.com/web-programming' },
+            
+            // TUESDAY (day: 2)
+            { day: 2, time: '12:00 PM', timeEnd: '02:00 PM', title: 'Q&A Session', course: 'Environmental Science', link: 'https://example.com/environmental-science' },
+            { day: 2, time: '03:00 PM', timeEnd: '05:00 PM', title: 'Q&A Session', course: 'Mathematics', link: 'https://example.com/mathematics' },
+            { day: 2, time: '08:00 PM', timeEnd: '09:30 PM', title: 'DB Session', course: 'C Programming', link: 'https://example.com/c-programming' },
+            
+            // WEDNESDAY (day: 3)
+            { day: 3, time: '02:00 PM', timeEnd: '04:00 PM', title: 'Q&A Session', course: 'Web Programming', link: 'https://example.com/web-programming' },
+            { day: 3, time: '08:30 PM', timeEnd: '10:00 PM', title: 'DB Session', course: 'Mathematics', link: 'https://example.com/mathematics' },
+            
+            // THURSDAY (day: 4)
+            { day: 4, time: '02:30 PM', timeEnd: '04:30 PM', title: 'Q&A Session', course: 'Environmental Science', link: 'https://example.com/environmental-science' },
+            { day: 4, time: '08:00 PM', timeEnd: '10:00 PM', title: 'Q&A Session', course: 'Technical Communication', link: 'https://example.com/technical-communication' },
+            
+            // FRIDAY (day: 5)
+            { day: 5, time: '10:00 AM', timeEnd: '12:00 PM', title: 'Live Class', course: 'Fundamentals of Mathematics', link: 'https://example.com/fundamentals-mathematics' },
+            { day: 5, time: '02:00 PM', timeEnd: '03:30 PM', title: 'Live Class', course: 'Fundamentals of Computers', link: 'https://example.com/fundamentals-computers' },
+            { day: 5, time: '04:00 PM', timeEnd: '05:30 PM', title: 'Live Class', course: 'Web Programming', link: 'https://example.com/web-programming' },
+            { day: 5, time: '08:00 PM', timeEnd: '10:00 PM', title: 'Live Class', course: 'C Programming', link: 'https://example.com/c-programming' },
+        ];
+
+        // ============= STATE MANAGEMENT =============
+        let currentPage = 'home';
+        let selectedDate = new Date();
+        let miniCalendarDate = new Date();
+
+        // ============= PAGE NAVIGATION =============
+        function showPage(page) {
+            const homePage = document.querySelector('.home-page');
+            const calendarPage = document.querySelector('.calendar-page');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            if (page === 'home') {
+                homePage.classList.remove('hidden');
+                calendarPage.classList.remove('active');
+                navLinks[0].classList.add('active');
+                navLinks[1].classList.remove('active');
+            } else if (page === 'calendar') {
+                homePage.classList.add('hidden');
+                calendarPage.classList.add('active');
+                navLinks[0].classList.remove('active');
+                navLinks[1].classList.add('active');
+                renderCalendarView();
+            }
+            currentPage = page;
+        }
+
+        // ============= DATE UTILITIES =============
+        function formatDate(date) {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        function formatDateShort(date) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        function getDateString(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        function getEventsForDate(date) {
+            const dateStr = getDateString(date);
+            const dayOfWeek = date.getDay();
+            
+            // Get specific date events
+            const specificEvents = EVENTS.filter(event => event.date === dateStr);
+            
+            // Get weekly recurring events for this day
+            const recurringEvents = WEEKLY_EVENTS
+                .filter(event => event.day === dayOfWeek)
+                .map(event => ({
+                    ...event,
+                    date: dateStr
+                }));
+            
+            // Combine and return all events
+            return [...specificEvents, ...recurringEvents];
+        }
+
+        function hasEvents(date) {
+            return getEventsForDate(date).length > 0;
+        }
+
+        // ============= CALENDAR NAVIGATION =============
+        function changeDay(delta) {
+            selectedDate.setDate(selectedDate.getDate() + delta);
+            renderCalendarView();
+        }
+
+        function changeMiniMonth(delta) {
+            miniCalendarDate.setMonth(miniCalendarDate.getMonth() + delta);
+            renderMiniCalendar();
+        }
+
+        // ============= RENDER FUNCTIONS =============
+        function renderUpcomingEvents() {
+            const container = document.getElementById('upcomingEventsList');
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            // Get only today's events
+            const todayEvents = getEventsForDate(today);
+            
+            if (todayEvents.length === 0) {
+                container.innerHTML = '<div style="padding: 20px; text-align: center; color: #999;">No events scheduled for today</div>';
+                return;
+            }
+            
+            container.innerHTML = todayEvents.map(event => {
+                const eventDate = new Date(event.date);
+                const month = eventDate.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+                const day = eventDate.getDate();
+                const displayTime = event.timeEnd ? `${event.time} - ${event.timeEnd}` : event.time;
+                
+                return `
+                    <div class="event-item">
+                        <div class="event-date">
+                            <span class="event-month">${month}</span>
+                            <span class="event-day">${day}</span>
+                        </div>
+                        <div class="event-details">
+                            <div class="event-time">${displayTime}</div>
+                            <div class="event-title-text">${event.title}</div>
+                            <a href="${event.link}" class="event-course-link" target="_blank" onclick="event.stopPropagation()">${event.course}</a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderCalendarView() {
+            document.getElementById('calendarCurrentDate').textContent = formatDateShort(selectedDate);
+            
+            // Render time slots with events
+            const timeSlotsContainer = document.getElementById('timeSlots');
+            const hours = ['8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM'];
+            
+            const events = getEventsForDate(selectedDate);
+            
+            timeSlotsContainer.innerHTML = `
+                <div class="time-slot">
+                    <div class="all-day-label">all day</div>
+                    <div class="event-container"></div>
+                </div>
+                ${hours.map(hour => {
+                    const matchingEvents = events.filter(e => e.time.includes(hour.split(':')[0]));
+                    return `
+                        <div class="time-slot">
+                            <div class="time-label">${hour}</div>
+                            <div class="event-container">
+                                ${matchingEvents.map(event => {
+                                    const displayTime = event.timeEnd ? `${event.time} - ${event.timeEnd}` : event.time;
+                                    return `
+                                        <div class="event-block" onclick="handleEventClick('${event.link}')">
+                                            <div class="event-title">${event.title} - ${event.course}</div>
+                                            <div class="event-time">${displayTime}</div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            `;
+            
+            renderMiniCalendar();
+        }
+
+        function renderMiniCalendar() {
+            const year = miniCalendarDate.getFullYear();
+            const month = miniCalendarDate.getMonth();
+            
+            document.getElementById('miniCalendarTitle').textContent = 
+                miniCalendarDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+            
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const daysInPrevMonth = new Date(year, month, 0).getDate();
+            
+            let html = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+                .map(day => `<div class="day-name">${day}</div>`)
+                .join('');
+            
+            // Previous month days
+            for (let i = firstDay - 1; i >= 0; i--) {
+                html += `<div class="mini-day other-month">${daysInPrevMonth - i}</div>`;
+            }
+            
+            // Current month days
+            for (let day = 1; day <= daysInMonth; day++) {
+                const date = new Date(year, month, day);
+                const isSelected = date.toDateString() === selectedDate.toDateString();
+                const hasEvent = hasEvents(date);
+                const classes = `mini-day ${isSelected ? 'selected' : ''} ${hasEvent ? 'has-event' : ''}`;
+                
+                html += `<div class="${classes}" onclick="selectDate(${year}, ${month}, ${day})">${day}</div>`;
+            }
+            
+            // Next month days
+            const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
+            const remainingCells = totalCells - (firstDay + daysInMonth);
+            for (let day = 1; day <= remainingCells; day++) {
+                html += `<div class="mini-day other-month">${day}</div>`;
+            }
+            
+            document.getElementById('miniCalendarGrid').innerHTML = html;
+        }
+
+        function selectDate(year, month, day) {
+            selectedDate = new Date(year, month, day);
+            renderCalendarView();
+        }
+
+        function handleEventClick(link) {
+            if (link && link !== '#') {
+                window.open(link, '_blank');
+            }
+        }
+
+        function updateWelcomeText() {
+            const welcomeElement = document.getElementById('welcomeText');
+            if (USER_NAME && USER_NAME.trim() !== '') {
+                welcomeElement.textContent = `Welcome ${USER_NAME}`;
+            } else {
+                welcomeElement.textContent = 'Welcome to Manipal University Jaipur';
+            }
+        }
+
+        function updateCurrentDate() {
+            const today = new Date();
+            // Format: Day, Month Date, Year (e.g., "Sunday, December 21, 2025")
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric'
+            };
+            const formattedDate = today.toLocaleDateString('en-US', options);
+            document.getElementById('currentDate').textContent = formattedDate;
+        }
+
+        // ============= INITIALIZATION =============
+        function init() {
+            // Update welcome text
+            updateWelcomeText();
+            
+            // Set current date in sidebar (updates daily automatically)
+            const today = new Date();
+            updateCurrentDate();
+            
+            // Set selected date to today
+            selectedDate = new Date();
+            selectedDate.setHours(0, 0, 0, 0);
+            
+            miniCalendarDate = new Date();
+            miniCalendarDate.setHours(0, 0, 0, 0);
+            
+            // Render upcoming events
+            renderUpcomingEvents();
+            
+            // Tab switching
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                });
+            });
+            
+            // Update date every minute to ensure it's always current
+            setInterval(updateCurrentDate, 60000);
+        }
+
+        // Start the app
+        init();
+    </script>
+</body>
+</html>
