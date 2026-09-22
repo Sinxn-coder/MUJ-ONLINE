@@ -1629,6 +1629,179 @@
             }
         }
 
+        /* Mobile layout refinements */
+        @media (max-width: 768px) {
+            html,
+            body {
+                width: 100%;
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            .top-nav {
+                padding: 0 16px;
+            }
+
+            .nav-left,
+            .nav-right {
+                min-width: 0;
+            }
+
+            .university-name {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .hero-banner {
+                width: auto;
+                margin: 16px;
+                background-position: center;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero-text {
+                max-width: 100%;
+                overflow-wrap: anywhere;
+            }
+
+            .main-container,
+            .calendar-page {
+                width: 100%;
+                max-width: 100%;
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .left-column,
+            .right-column,
+            .sidebar-card,
+            .course-card,
+            .calendar-controls,
+            .day-view,
+            .mini-calendar {
+                min-width: 0;
+                max-width: 100%;
+            }
+
+            .course-card,
+            .sidebar-card,
+            .day-view {
+                overflow: hidden;
+            }
+
+            .course-title,
+            .course-code,
+            .card-title,
+            .card-link,
+            .event-title-text,
+            .event-course-link {
+                overflow-wrap: anywhere;
+            }
+
+            .calendar-main {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .calendar-controls {
+                align-items: stretch;
+            }
+
+            .view-tabs {
+                max-width: 100%;
+                overflow-x: auto;
+            }
+
+            .calendar-actions {
+                min-width: 0;
+            }
+
+            .time-slots {
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-nav {
+                padding: 0 10px;
+            }
+
+            .nav-left {
+                flex: 1;
+                overflow: hidden;
+            }
+
+            .nav-right {
+                flex-shrink: 0;
+            }
+
+            .nav-right .icon-apps,
+            .nav-right .icon-chat,
+            .nav-right .icon-settings {
+                display: none;
+            }
+
+            .nav-right .icon-notification {
+                min-width: 40px;
+                min-height: 40px;
+            }
+
+            .hero-banner {
+                margin: 12px 10px;
+            }
+
+            .hero-text {
+                font-size: clamp(18px, 7vw, 24px);
+                line-height: 1.2;
+            }
+
+            .main-container,
+            .calendar-page,
+            .announcements-section {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .calendar-controls {
+                gap: 12px;
+            }
+
+            .view-tabs {
+                width: 100%;
+            }
+
+            .view-tab {
+                flex: 1 0 auto;
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .day-header {
+                align-items: stretch;
+            }
+
+            .day-nav {
+                justify-content: space-between;
+            }
+
+            .current-date {
+                font-size: 16px;
+                text-align: center;
+            }
+
+            .time-slots {
+                padding: 8px;
+            }
+
+            .time-slot {
+                grid-template-columns: 64px minmax(180px, 1fr);
+            }
+        }
+
         /* Print styles */
         @media print {
             .top-nav,
@@ -1987,13 +2160,13 @@
             { day: 0, time: '08:30 PM', timeEnd: '10:00 PM', title: 'Live Class', course: 'Technical Communication', link: 'https://example.com/technical-communication' },
             
             // MONDAY (day: 1)
-            { day: 1, time: '10:00 AM', timeEnd: '12:00 PM', title: 'Q&A Session', course: 'C Programming', link: 'https://example.com/c-programming' },
+            { day: 1, time: '11:00 AM', timeEnd: '12:00 PM', title: 'Q&A Session', course: 'C Programming', link: 'https://example.com/c-programming' },
             { day: 1, time: '08:00 PM', timeEnd: '10:00 PM', title: 'Q&A Session', course: 'Web Programming', link: 'https://example.com/web-programming' },
             
             // TUESDAY (day: 2)
-            { day: 2, time: '12:00 PM', timeEnd: '02:00 PM', title: 'Q&A Session', course: 'Environmental Science', link: 'https://example.com/environmental-science' },
+            { day: 2, time: '02:00 PM', timeEnd: '03:00 PM', title: 'Q&A Session', course: 'Environmental Science', link: 'https://example.com/environmental-science' },
             { day: 2, time: '03:00 PM', timeEnd: '05:00 PM', title: 'Q&A Session', course: 'Mathematics', link: 'https://example.com/mathematics' },
-            { day: 2, time: '08:00 PM', timeEnd: '09:30 PM', title: 'DB Session', course: 'C Programming', link: 'https://example.com/c-programming' },
+            { day: 2, time: '07:00 PM', timeEnd: '08:00 PM', title: 'DB Session', course: 'C Programming', link: 'https://example.com/c-programming' },
             
             // WEDNESDAY (day: 3)
             { day: 3, time: '02:00 PM', timeEnd: '04:00 PM', title: 'Q&A Session', course: 'Web Programming', link: 'https://example.com/web-programming' },
