@@ -2146,41 +2146,45 @@
         // Add recurring weekly events here
         const WEEKLY_EVENTS = [
             // SATURDAY (day: 6)
-            { day: 6, time: '09:30 AM', timeEnd: '11:00 AM', title: 'Live Class', course: 'Web Programming', link: 'https://example.com/web-programming' },
-            { day: 6, time: '02:30 PM', timeEnd: '04:00 PM', title: 'Live Class', course: 'C Programming', link: 'https://example.com/c-programming' },
-            { day: 6, time: '04:30 PM', timeEnd: '06:00 PM', title: 'Live Class', course: 'Environmental Science', link: 'https://example.com/environmental-science' },
-            { day: 6, time: '06:30 PM', timeEnd: '08:00 PM', title: 'Live Class', course: 'Technical Communication', link: 'https://example.com/technical-communication' },
-            { day: 6, time: '08:30 PM', timeEnd: '10:00 PM', title: 'Live Class', course: 'Mathematics', link: 'https://example.com/mathematics' },
+            { day: 6, time: '08:30 AM', timeEnd: '09:30 AM', title: 'Live Class', course: 'Web Programming', link: 'https://example.com/web-programming' },
+            { day: 6, time: '10:30 AM', timeEnd: '11:30 AM', title: 'Live Class', course: 'C Programming', link: 'https://example.com/c-programming' },
+            { day: 6, time: '01:00 PM', timeEnd: '02:00 PM', title: 'Live Class', course: 'Environmental Science', link: 'https://example.com/environmental-science' },
+            { day: 6, time: '03:30 PM', timeEnd: '04:30 PM', title: 'Live Class', course: 'Technical Communication', link: 'https://example.com/technical-communication' },
+            { day: 6, time: '06:00 PM', timeEnd: '07:00 PM', title: 'Live Class', course: 'Mathematics', link: 'https://example.com/mathematics' },
+            { day: 6, time: '08:30 PM', timeEnd: '09:30 PM', title: 'Live Class', course: 'Fundamentals of Computers', link: 'https://example.com/fundamentals-computers' },
             
-            // SUNDAY (day: 0) - Same times, shuffled subjects
-            { day: 0, time: '09:30 AM', timeEnd: '11:00 AM', title: 'Live Class', course: 'C Programming', link: 'https://example.com/c-programming' },
-            { day: 0, time: '02:30 PM', timeEnd: '04:00 PM', title: 'Live Class', course: 'Environmental Science', link: 'https://example.com/environmental-science' },
-            { day: 0, time: '04:30 PM', timeEnd: '06:00 PM', title: 'Live Class', course: 'Mathematics', link: 'https://example.com/mathematics' },
-            { day: 0, time: '06:30 PM', timeEnd: '08:00 PM', title: 'Live Class', course: 'Web Programming', link: 'https://example.com/web-programming' },
-            { day: 0, time: '08:30 PM', timeEnd: '10:00 PM', title: 'Live Class', course: 'Technical Communication', link: 'https://example.com/technical-communication' },
+            // SUNDAY (day: 0)
+            { day: 0, time: '09:00 AM', timeEnd: '10:00 AM', title: 'Live Class', course: 'C Programming', link: 'https://example.com/c-programming' },
+            { day: 0, time: '11:30 AM', timeEnd: '12:30 PM', title: 'Live Class', course: 'Environmental Science', link: 'https://example.com/environmental-science' },
+            { day: 0, time: '01:30 PM', timeEnd: '02:30 PM', title: 'Live Class', course: 'Mathematics', link: 'https://example.com/mathematics' },
+            { day: 0, time: '04:00 PM', timeEnd: '05:00 PM', title: 'Live Class', course: 'Web Programming', link: 'https://example.com/web-programming' },
+            { day: 0, time: '06:30 PM', timeEnd: '07:30 PM', title: 'Live Class', course: 'Technical Communication', link: 'https://example.com/technical-communication' },
+            { day: 0, time: '08:00 PM', timeEnd: '09:00 PM', title: 'Live Class', course: 'Fundamentals of Mathematics', link: 'https://example.com/fundamentals-mathematics' },
             
             // MONDAY (day: 1)
-            { day: 1, time: '11:00 AM', timeEnd: '12:00 PM', title: 'Q&A Session', course: 'C Programming', link: 'https://example.com/c-programming' },
-            { day: 1, time: '08:00 PM', timeEnd: '10:00 PM', title: 'Q&A Session', course: 'Web Programming', link: 'https://example.com/web-programming' },
+            { day: 1, time: '11:00 AM', timeEnd: '12:00 PM', title: 'Live Class', course: 'C Programming', link: 'https://example.com/c-programming' },
+            { day: 1, time: '02:00 PM', timeEnd: '03:00 PM', title: 'Live Class', course: 'Web Programming', link: 'https://example.com/web-programming' },
+            { day: 1, time: '07:00 PM', timeEnd: '08:00 PM', title: 'Live Class', course: 'Environmental Science', link: 'https://example.com/environmental-science' },
             
             // TUESDAY (day: 2)
-            { day: 2, time: '02:00 PM', timeEnd: '03:00 PM', title: 'Q&A Session', course: 'Environmental Science', link: 'https://example.com/environmental-science' },
-            { day: 2, time: '04:00 PM', timeEnd: '05:00 PM', title: 'Q&A Session', course: 'Mathematics', link: 'https://example.com/mathematics' },
-            { day: 2, time: '07:00 PM', timeEnd: '08:00 PM', title: 'DB Session', course: 'C Programming', link: 'https://example.com/c-programming' },
+            { day: 2, time: '11:00 AM', timeEnd: '12:00 PM', title: 'Live Class', course: 'Technical Communication', link: 'https://example.com/technical-communication' },
+            { day: 2, time: '02:00 PM', timeEnd: '03:00 PM', title: 'Live Class', course: 'Mathematics', link: 'https://example.com/mathematics' },
+            { day: 2, time: '07:00 PM', timeEnd: '08:00 PM', title: 'Live Class', course: 'Fundamentals of Computers', link: 'https://example.com/fundamentals-computers' },
             
             // WEDNESDAY (day: 3)
-            { day: 3, time: '02:00 PM', timeEnd: '04:00 PM', title: 'Q&A Session', course: 'Web Programming', link: 'https://example.com/web-programming' },
-            { day: 3, time: '08:30 PM', timeEnd: '10:00 PM', title: 'DB Session', course: 'Mathematics', link: 'https://example.com/mathematics' },
+            { day: 3, time: '11:00 AM', timeEnd: '12:00 PM', title: 'Live Class', course: 'Fundamentals of Mathematics', link: 'https://example.com/fundamentals-mathematics' },
+            { day: 3, time: '02:00 PM', timeEnd: '03:00 PM', title: 'Live Class', course: 'C Programming', link: 'https://example.com/c-programming' },
+            { day: 3, time: '07:00 PM', timeEnd: '08:00 PM', title: 'Live Class', course: 'Web Programming', link: 'https://example.com/web-programming' },
             
             // THURSDAY (day: 4)
-            { day: 4, time: '02:30 PM', timeEnd: '04:30 PM', title: 'Q&A Session', course: 'Environmental Science', link: 'https://example.com/environmental-science' },
-            { day: 4, time: '08:00 PM', timeEnd: '10:00 PM', title: 'Q&A Session', course: 'Technical Communication', link: 'https://example.com/technical-communication' },
+            { day: 4, time: '11:00 AM', timeEnd: '12:00 PM', title: 'Live Class', course: 'Environmental Science', link: 'https://example.com/environmental-science' },
+            { day: 4, time: '02:00 PM', timeEnd: '03:00 PM', title: 'Live Class', course: 'Technical Communication', link: 'https://example.com/technical-communication' },
+            { day: 4, time: '07:00 PM', timeEnd: '08:00 PM', title: 'Live Class', course: 'Mathematics', link: 'https://example.com/mathematics' },
             
             // FRIDAY (day: 5)
-            { day: 5, time: '10:30 AM', timeEnd: '12:30 PM', title: 'Live Class', course: 'Fundamentals of Mathematics', link: 'https://example.com/fundamentals-mathematics' },
-            { day: 5, time: '02:00 PM', timeEnd: '03:30 PM', title: 'Live Class', course: 'Fundamentals of Computers', link: 'https://example.com/fundamentals-computers' },
-            { day: 5, time: '04:00 PM', timeEnd: '05:30 PM', title: 'Live Class', course: 'Web Programming', link: 'https://example.com/web-programming' },
-            { day: 5, time: '08:00 PM', timeEnd: '10:00 PM', title: 'Live Class', course: 'C Programming', link: 'https://example.com/c-programming' },
+            { day: 5, time: '11:00 AM', timeEnd: '12:00 PM', title: 'Live Class', course: 'Fundamentals of Computers', link: 'https://example.com/fundamentals-computers' },
+            { day: 5, time: '02:00 PM', timeEnd: '03:00 PM', title: 'Live Class', course: 'Fundamentals of Mathematics', link: 'https://example.com/fundamentals-mathematics' },
+            { day: 5, time: '07:00 PM', timeEnd: '08:00 PM', title: 'Live Class', course: 'C Programming', link: 'https://example.com/c-programming' },
         ];
 
         // ============= STATE MANAGEMENT =============
